@@ -1,10 +1,17 @@
 # Proxmox test installation
 
-THis was forked from my [OSX Davinci experiments](https://github.com/daneroo/osx-install-davinci/blob/master/Proxmox.md)
+This was forked from my [OSX Davinci experiments](https://github.com/daneroo/osx-install-davinci/blob/master/Proxmox.md)
+
+- Can't boot installer on galois;
+  - try ubuntu-20.04 Desktop
+- Can't boot installer euler: try again, try disk inventory
+- Could try on fermat. (Core i7?)
 
 ## Install
 
 See: <https://pve.proxmox.com/wiki/Install_from_USB_Stick>
+
+Boot Installer (with Alt on non MacOS keyboard)
 
 ### USB Stick
 
