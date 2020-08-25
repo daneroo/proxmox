@@ -2,10 +2,16 @@
 
 This was forked from my [OSX Davinci experiments](https://github.com/daneroo/osx-install-davinci/blob/master/Proxmox.md)
 
-- Can't boot installer on galois;
-  - try ubuntu-20.04 Desktop
-- Can't boot installer euler: try again, try disk inventory
+Objective: manage cluster (k8s) and remote workspaces
+
+- Storage
+- Screen Sharing - CHromebook/MacOS
+
+## TODO
+
 - Could try on fermat. (Core i7?)
+- [Catalina w/OpenCore](https://www.nicksherlock.com/2020/04/installing-macos-catalina-on-proxmox-with-opencore/)
+- Galois setup : dual boot OSX/Ubuntu 20.04
 
 ## Install
 
