@@ -16,6 +16,7 @@ State 2020-08-26: Proxmox Installed on fermat (full disk) with Catalina and Ubun
 ## TODO
 
 - Where does Tailscale fit in
+- Integrate with master infra repo
 
 ## Install and Setup
 
