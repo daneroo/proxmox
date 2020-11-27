@@ -4,6 +4,7 @@ This was forked from my [OSX Davinci experiments](https://github.com/daneroo/osx
 
 Objective: manage cluster (k8s) and remote workspaces
 
+- Docker remote for development
 - Storage
 - Screen Sharing - Chromebook/MacOS
 - Storage redundancy
@@ -11,7 +12,10 @@ Objective: manage cluster (k8s) and remote workspaces
 
 State 2020-08-26: Proxmox Installed on fermat (full disk) with Catalina and Ubuntu-20.04 guest vms.
 
-- [Proxmox on Fermat](https://192.168.86.239:8006>
+- [Proxmox on Fermat](https://fermat.imetrical.com:8006)
+- Hover: DNS Name fermat.imetrical.com: 192.168.86.239
+- Static IP `192.168.86.239` was assign in `/etc/network/interfaces`
+- Same IP was added to Google WIFI DHCP Reservation for it (under uneditable name **Apple**)
 
 ## TODO
 
