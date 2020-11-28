@@ -47,6 +47,62 @@ $ ~/Downloads/Proxmox/smc_read
 ourhardworkbythesewordsguardedpleasedontsteal(c)AppleComputerInc
 ```
 
+## Ubuntu 20.04
+
+- Update boot iso
+- check docker at install
+
+```bash
+sudo apt install net-tools htop iotop bash-completion -y
+# setup docker
+sudo groupadd docker
+sudo usermod -aG docker $USER
+sudo snap restart docker.dockerd
+# - or -
+sudo snap remove docker
+sudo snap install docker
+
+docker run --rm hello-world
+## docker bash completion, from this gist
+# - https://gist.github.com/toschneck/2df90c66e0f8d4c6567d69a36bfc5bcd
+
+# upgrade
+sudo apt update && sudo apt dist-upgrade && sudo apt autoremove
+sudo apt-get autoremove --purge
+
+# install go
+sudo snap install go --classic # classic may not necessary
+go version
+
+# setup PATH and bash...
+```
+
+```bash
+# session
+  136  find /usr/local/
+  137  export PATH=/usr/local/go/bin:$PATH
+  138  go vewrsion
+  139  go version
+  140  wget -c https://dl.google.com/go/go1.15.5.linux-amd64.tar.gz -O - | sudo tar -xz -C /usr/local
+  141  go version
+  142  time go run scripts/pump.go
+  143  docker ps -a
+  144  time go run scripts/pump.go
+  145  go mod tidy
+  146  ls
+  147  rm go1.15.5.linux-amd64.tar.gz
+  148  rm go1.15.5.linux-amd64.tar.gz.1
+  149  git log
+  150  git checkout develop
+  151  git status
+  152  go get gopls
+  153  go mod tidy
+  154  time go run scripts/pump.go
+  155  time scp -p daniel@dirac.imetrical.com:Code/Go/src/github.com/daneroo/go-ted1k/data .
+  156  time scp -rp daniel@dirac.imetrical.com:Code/Go/src/github.com/daneroo/go-ted1k/data .
+  157  history
+```
+
 ## References
 
 - [updated Catalina install post (with OpenCore)](https://www.nicksherlock.com/2020/04/installing-macos-catalina-on-proxmox-with-opencore/)
