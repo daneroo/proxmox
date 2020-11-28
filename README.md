@@ -73,6 +73,7 @@ sudo apt-get autoremove --purge
 # install go
 sudo snap install go --classic # classic may not necessary
 go version
+sudo apt install build-essential -y # for cgo
 
 # setup PATH and bash...
 ```
