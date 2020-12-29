@@ -5,6 +5,7 @@ This was forked from my [OSX Davinci experiments](https://github.com/daneroo/osx
 Objective: manage cluster (k8s) and remote workspaces
 
 - Docker remote for development
+- ipfs
 - Storage
 - Screen Sharing - Chromebook/MacOS
 - Storage redundancy
@@ -75,33 +76,24 @@ sudo snap install go --classic # classic may not necessary
 go version
 sudo apt install build-essential -y # for cgo
 
+# install nodejs - default channel is currently 12/stable
+sudo snap install node --channel=14/stable --classic
+
+# install ipfs - not tested - https://snapcraft.io/install/ipfs/ubuntu
+sudo snap install ipfs
+
 # setup PATH and bash...
 ```
 
+### Resize Disk
+
+[Resize disk in Prox mox](https://pve.proxmox.com/wiki/Resize_disks#Online_for_Linux_Guests)
+
 ```bash
-# session
-  136  find /usr/local/
-  137  export PATH=/usr/local/go/bin:$PATH
-  138  go vewrsion
-  139  go version
-  140  wget -c https://dl.google.com/go/go1.15.5.linux-amd64.tar.gz -O - | sudo tar -xz -C /usr/local
-  141  go version
-  142  time go run scripts/pump.go
-  143  docker ps -a
-  144  time go run scripts/pump.go
-  145  go mod tidy
-  146  ls
-  147  rm go1.15.5.linux-amd64.tar.gz
-  148  rm go1.15.5.linux-amd64.tar.gz.1
-  149  git log
-  150  git checkout develop
-  151  git status
-  152  go get gopls
-  153  go mod tidy
-  154  time go run scripts/pump.go
-  155  time scp -p daniel@dirac.imetrical.com:Code/Go/src/github.com/daneroo/go-ted1k/data .
-  156  time scp -rp daniel@dirac.imetrical.com:Code/Go/src/github.com/daneroo/go-ted1k/data .
-  157  history
+# Physical PV
+pvresize /dev/vda3
+# Logical LV
+lvresize --extents +100%FREE --resizefs /dev/mapper/ubuntu--vg-ubuntu--lv
 ```
 
 ## References
