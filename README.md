@@ -20,8 +20,9 @@ State 2020-08-26: Proxmox Installed on fermat (full disk) with Catalina and Ubun
 
 ## TODO
 
-- Where does Tailscale fit in
 - Integrate with master infra repo
+- Where does Tailscale fit in
+- [pulumi-proxmox](https://www.npmjs.com/package/@matchlighter/pulumi-proxmoxve)
 
 ## Install and Setup
 
