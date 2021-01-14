@@ -1,0 +1,11 @@
+{
+    "name": "pulumi-pxmx",
+    "devDependencies": {
+        "@types/node": "^10.0.0",
+        "ts-standard": "^10.0.0"
+    },
+    "dependencies": {
+        "@matchlighter/pulumi-proxmoxve": "^0.1.5",
+        "@pulumi/pulumi": "^2.0.0"
+    }
+}

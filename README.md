@@ -15,14 +15,18 @@ State 2020-08-26: Proxmox Installed on fermat (full disk) with Catalina and Ubun
 
 - [Proxmox on Fermat](https://fermat.imetrical.com:8006)
 - Hover: DNS Name fermat.imetrical.com: 192.168.86.239
-- Static IP `192.168.86.239` was assign in `/etc/network/interfaces`
+- Static IP `192.168.86.239` was assigned in `/etc/network/interfaces`
 - Same IP was added to Google WIFI DHCP Reservation for it (under uneditable name **Apple**)
+- Preliminary tests were done to use pulumi for provisioning, but no satisfatctory setup for parametrizing vm template and cloud-init (with snaps,tailscale,etc...)
 
 ## TODO
 
-- Integrate with master infra repo
+- Provisioning with Pulumi
+  - [pulumi-proxmox](https://www.npmjs.com/package/@matchlighter/pulumi-proxmoxve)
+  - parametrizing cloud-init or building custom iso's and templates
+  - adding snaps
 - Where does Tailscale fit in
-- [pulumi-proxmox](https://www.npmjs.com/package/@matchlighter/pulumi-proxmoxve)
+- Integrate with master infra repo
 
 ## Install and Setup
 
@@ -47,6 +51,61 @@ mv Catalina-installer.iso.img Catalina-installer.iso
 
 $ ~/Downloads/Proxmox/smc_read
 ourhardworkbythesewordsguardedpleasedontsteal(c)AppleComputerInc
+```
+
+## Making Fresh ubuntu iso for proxmox
+
+It should be possible to install from cloud-init (pointing to a static server with config), or perhaps with the auto_install script baked into the iso/template, but this is not yet done.
+
+When we instantiate a vm from a template, we will still want to provide at a minimum a new hostname. This is what the current `pulumi-pxmx` example does.
+
+- Ubuntu Autoinstall  (Subiquity)
+  - <https://ubuntu.com/server/docs/install/autoinstall>
+  - <https://ubuntu.com/server/docs/install/autoinstall-quickstart>
+  - post installation,  stored at `/var/log/installer/autoinstall-user-data`
+- See <https://www.aerialls.io/posts/ubuntu-server-2004-image-packer-subiquity-for-proxmox/>
+- How to make a custom iso (pre-autoinstall a.k.a <18.04) <https://github.com/Telmate/terraform-ubuntu-proxmox-iso>
+
+### Cloud init proxmox template
+
+This is how we made a proxmox template vm, which we can instantiate from pulumi. 
+
+```bash
+# download the image
+wget https://cloud-images.ubuntu.com/releases/focal/release/ubuntu-20.04-server-cloudimg-amd64.img
+# create a new VM
+qm create 9000 --memory 2048 --net0 virtio,bridge=vmbr0
+
+# import the downloaded disk to local-lvm storage
+# qm importdisk 9000 bionic-server-cloudimg-amd64.img local-lvm
+qm importdisk 9000 ubuntu-20.04-server-cloudimg-amd64.img local-lvm
+
+# finally attach the new disk to the VM as scsi drive
+qm set 9000 --scsihw virtio-scsi-pci --scsi0 local-lvm:vm-9000-disk-1
+
+# Add Cloud-Init CDROM drive : then edit and regenerate
+qm set 9000 --ide2 local-lvm:cloudinit
+
+# set the boot disk
+qm set 9000 --boot c --bootdisk scsi0
+
+# Also configure a serial console and use it as a display
+qm set 9000 --serial0 socket --vga serial0
+
+# convert the VM into a template
+qm template 9000
+```
+
+### Cloning the template
+
+```bash
+#To examine:
+qm cloudinit dump 9000 user
+qm cloudinit dump 9000 network
+qm cloudinit dump 9000 meta
+
+# To Clone
+qm clone 9000 123 --name new-name-of-vm
 ```
 
 ## Ubuntu 20.04

@@ -1,0 +1,7 @@
+config:
+  proxmoxve:pmApiUrl: https://fermat.imetrical.com:8006/api2/json
+  proxmoxve:pmPassword:
+    secure: AAABALwFOwVYbdQGtyrdtQ3VEulQB7DIKZRJLrHI3UEjNQhz6Vw=
+  proxmoxve:pmTlsInsecure: "true"
+  proxmoxve:pmUser:
+    secure: AAABAKXfYNqhKOXHL6yBE3JtzxqHyB40rG+xEQAehh8G/W4fjI1tZA==

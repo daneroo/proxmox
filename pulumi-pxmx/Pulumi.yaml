@@ -1,0 +1,3 @@
+name: pulumi-pxmx
+runtime: nodejs
+description: A Pulumi (TypeScript) program to create a qemu vm on a proxmox server
