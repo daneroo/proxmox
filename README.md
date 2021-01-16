@@ -26,6 +26,7 @@ State 2020-08-26: Proxmox Installed on fermat (full disk) with Catalina and Ubun
   - parametrizing cloud-init or building custom iso's and templates
   - adding snaps
 - Where does Tailscale fit in
+  - [Tailscale + k3s](https://blog.dsb.dev/posts/accessing-my-k3s-cluster-from-anywhere-with-tailscale/index.html)
 - Integrate with master infra repo
 
 ## Install and Setup
