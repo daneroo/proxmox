@@ -10,18 +10,26 @@ const config = new pulumi.Config()
 const px1vm1 = new pve.QemuVM('px1vm1', {
   targetNode: 'fermat',
   clone: 'VM 9000',
+  // cloud init - START
   ciuser: 'daniel',
   cipassword: 'sekret',
+  // not yet, needs files as snippets...
+  // osType: 'cloud-init',
+  // cicustom: 'user=local:snippets/user_data_vm-${count.index}.yml',
+  // cloud-init - END
+
   // fullClone: false,
   memory: 2048,
   sockets: 1,
   cores: 2,
   ipconfig0: 'ip=dhcp',
-  networks: [{
-    model: 'virtio',
-    bridge: 'vmbr0'
-    // tag: 10
-  }],
+  networks: [
+    {
+      model: 'virtio',
+      bridge: 'vmbr0'
+      // tag: 10
+    }
+  ],
   disks: [
     {
       storage: 'local-lvm',
@@ -30,3 +38,5 @@ const px1vm1 = new pve.QemuVM('px1vm1', {
     }
   ]
 })
+
+export const vmid = px1vm1.vmid

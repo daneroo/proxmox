@@ -21,10 +21,12 @@ State 2020-08-26: Proxmox Installed on fermat (full disk) with Catalina and Ubun
 
 ## TODO
 
+- Update OSX Section for Bug Sur
 - Provisioning with Pulumi
   - [pulumi-proxmox](https://www.npmjs.com/package/@matchlighter/pulumi-proxmoxve)
   - parametrizing cloud-init or building custom iso's and templates
   - adding snaps
+    - <https://cloudinit.readthedocs.io/en/latest/topics/format.html>
 - Where does Tailscale fit in
   - [Tailscale + k3s](https://blog.dsb.dev/posts/accessing-my-k3s-cluster-from-anywhere-with-tailscale/index.html)
 - Integrate with master infra repo
@@ -38,6 +40,11 @@ Got `proxmox-ve_6.2-1.iso` from <https://www.proxmox.com/en/downloads/category/i
 - Burn iso to DVD worked much better than USB Stick, for booting Mac Mini)
 - [Boot Installer (with Alt on non-MacOS keyboard)](https://support.apple.com/en-gb/HT201255)
 
+### Big Sur
+
+- [Installing macOS 11 “Big Sur” on Proxmox 6
+](https://www.nicksherlock.com/2020/06/installing-macos-big-sur-on-proxmox/)
+- [Author's current Setup](https://www.nicksherlock.com/2018/11/my-macos-vm-proxmox-setup/)
 ### Catalina
 
 - [Bringing up Catalina w/OpenCore](https://www.nicksherlock.com/2020/04/installing-macos-catalina-on-proxmox-with-opencore/)

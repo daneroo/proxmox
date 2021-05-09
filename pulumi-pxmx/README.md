@@ -3,6 +3,16 @@
 
 - <https://github.com/matchlighter/pulumi-proxmoxve>
 
+## Last State 2021-05-09
+
+Destroyed the stack, but did not remove it!
+
+```bash
+pulumi destroy -s daneroo/pulumi-pxmx/dev
+# but not removed
+# pulumi stack rm daneroo/pulumi-pxmx/dev
+```
+
 ## Setup from MacOS (darwin)
 
 ```bash
