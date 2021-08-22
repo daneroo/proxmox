@@ -2,12 +2,18 @@
 # Pulumi and ProxMox
 
 - <https://github.com/matchlighter/pulumi-proxmoxve>
+  - https://github.com/Telmate/proxmox-api-go
+
+
+## Moving to Talos
 
 ## Last State 2021-05-09
 
 Destroyed the stack, but did not remove it!
 
 ```bash
+pulumi up
+
 pulumi destroy -s daneroo/pulumi-pxmx/dev
 # but not removed
 # pulumi stack rm daneroo/pulumi-pxmx/dev
