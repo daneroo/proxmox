@@ -1,0 +1,440 @@
+{
+    "version": 3,
+    "deployment": {
+        "manifest": {
+            "time": "2021-08-27T09:17:24.441069-04:00",
+            "magic": "25ff35eb2fae40d93bc09f0c28dba28b6a6c73228e44b41f98c7670f813f2894",
+            "version": "v3.11.0"
+        },
+        "secrets_providers": {
+            "type": "service",
+            "state": {
+                "url": "https://api.pulumi.com",
+                "owner": "daneroo",
+                "project": "pulumi-pxmx",
+                "stack": "dev"
+            }
+        },
+        "resources": [
+            {
+                "urn": "urn:pulumi:dev::pulumi-pxmx::pulumi:pulumi:Stack::pulumi-pxmx-dev",
+                "custom": false,
+                "type": "pulumi:pulumi:Stack"
+            },
+            {
+                "urn": "urn:pulumi:dev::pulumi-pxmx::pulumi:providers:proxmoxve::default_0_1_5",
+                "custom": true,
+                "id": "41559331-f4b0-456d-bf96-ff4c1cd15cb3",
+                "type": "pulumi:providers:proxmoxve",
+                "inputs": {
+                    "pmApiUrl": "https://fermat.imetrical.com:8006/api2/json",
+                    "pmPassword": {
+                        "4dabf18193072939515e22adb298388d": "1b47061264138c4ac30d75fd1eb44270",
+                        "ciphertext": "AAABAM6+jb+MJqSlzxXby1ButWzlfTrgd9JTToPaQqjIdqvmqQrj7g=="
+                    },
+                    "pmTlsInsecure": "true",
+                    "pmUser": {
+                        "4dabf18193072939515e22adb298388d": "1b47061264138c4ac30d75fd1eb44270",
+                        "ciphertext": "AAABAIRQYpOZLXOBa6zlLn9A1IRjeOiRozmdJoUas0pPuSV96OBY5C6S"
+                    },
+                    "version": "0.1.5"
+                },
+                "outputs": {
+                    "pmApiUrl": "https://fermat.imetrical.com:8006/api2/json",
+                    "pmPassword": {
+                        "4dabf18193072939515e22adb298388d": "1b47061264138c4ac30d75fd1eb44270",
+                        "ciphertext": "AAABAKZQrp+QPINMycDS7UsmPOg+BD6JuDmYiZOAzOhOQv3gn93/9A=="
+                    },
+                    "pmTlsInsecure": "true",
+                    "pmUser": {
+                        "4dabf18193072939515e22adb298388d": "1b47061264138c4ac30d75fd1eb44270",
+                        "ciphertext": "AAABANb1vwz38OJLHIPytrpQjGF+AuXuV2Rb8VKMGi8nD+b2xOpYOqBC"
+                    },
+                    "version": "0.1.5"
+                }
+            },
+            {
+                "urn": "urn:pulumi:dev::pulumi-pxmx::proxmoxve:index/qemuVM:QemuVM::talos-0",
+                "custom": true,
+                "id": "fermat/qemu/104",
+                "type": "proxmoxve:index/qemuVM:QemuVM",
+                "inputs": {
+                    "__defaults": [
+                        "agent",
+                        "balloon",
+                        "bios",
+                        "boot",
+                        "ciWait",
+                        "cloneWait",
+                        "cpu",
+                        "defineConnectionInfo",
+                        "forceCreate",
+                        "fullClone",
+                        "hotplug",
+                        "kvm",
+                        "name",
+                        "numa",
+                        "onboot",
+                        "preprovision",
+                        "qemuOs",
+                        "vcpus"
+                    ],
+                    "agent": 0,
+                    "balloon": 0,
+                    "bios": "seabios",
+                    "boot": "cdn",
+                    "ciWait": 30,
+                    "cloneWait": 15,
+                    "cores": 2,
+                    "cpu": "host",
+                    "defineConnectionInfo": true,
+                    "disks": [
+                        {
+                            "__defaults": [
+                                "backup",
+                                "cache",
+                                "iothread",
+                                "mbps",
+                                "mbpsRd",
+                                "mbpsRdMax",
+                                "mbpsWr",
+                                "mbpsWrMax",
+                                "replicate"
+                            ],
+                            "backup": false,
+                            "cache": "none",
+                            "iothread": false,
+                            "mbps": 0,
+                            "mbpsRd": 0,
+                            "mbpsRdMax": 0,
+                            "mbpsWr": 0,
+                            "mbpsWrMax": 0,
+                            "replicate": false,
+                            "size": "10G",
+                            "storage": "local-lvm",
+                            "type": "scsi"
+                        }
+                    ],
+                    "forceCreate": false,
+                    "fullClone": true,
+                    "hotplug": "network,disk,usb",
+                    "iso": "local:iso/talos-amd64.iso",
+                    "kvm": true,
+                    "memory": 2048,
+                    "name": "talos-0-26f71e5",
+                    "networks": [
+                        {
+                            "__defaults": [
+                                "firewall",
+                                "linkDown",
+                                "tag"
+                            ],
+                            "bridge": "vmbr0",
+                            "firewall": false,
+                            "linkDown": false,
+                            "model": "virtio",
+                            "tag": -1
+                        }
+                    ],
+                    "numa": false,
+                    "onboot": true,
+                    "preprovision": true,
+                    "qemuOs": "l26",
+                    "scsihw": "virtio-scsi-pci",
+                    "sockets": 1,
+                    "targetNode": "fermat",
+                    "vcpus": 0
+                },
+                "outputs": {
+                    "agent": 0,
+                    "balloon": 0,
+                    "bios": "seabios",
+                    "boot": "cdn",
+                    "bootdisk": "scsi0",
+                    "bridge": "",
+                    "cicustom": "",
+                    "cipassword": "",
+                    "ciuser": "",
+                    "cloneWait": 15,
+                    "cores": 2,
+                    "cpu": "host",
+                    "defineConnectionInfo": true,
+                    "desc": "",
+                    "diskGb": 0,
+                    "disks": [
+                        {
+                            "backup": false,
+                            "cache": "none",
+                            "discard": "",
+                            "file": "vm-104-disk-0",
+                            "format": "raw",
+                            "iothread": false,
+                            "mbps": 0,
+                            "mbpsRd": 0,
+                            "mbpsRdMax": 0,
+                            "mbpsWr": 0,
+                            "mbpsWrMax": 0,
+                            "media": "",
+                            "replicate": false,
+                            "size": "10G",
+                            "slot": 0,
+                            "ssd": false,
+                            "storage": "local-lvm",
+                            "storageType": "lvmthin",
+                            "type": "scsi",
+                            "volume": "local-lvm:vm-104-disk-0"
+                        }
+                    ],
+                    "forceCreate": false,
+                    "fullClone": true,
+                    "hastate": "",
+                    "hotplug": "network,disk,usb",
+                    "id": "fermat/qemu/104",
+                    "ipconfig0": "",
+                    "ipconfig1": "",
+                    "ipconfig2": "",
+                    "iso": "local:iso/talos-amd64.iso",
+                    "kvm": true,
+                    "mac": "",
+                    "memory": 2048,
+                    "name": "talos-0-26f71e5",
+                    "nameserver": "",
+                    "networks": [
+                        {
+                            "bridge": "vmbr0",
+                            "firewall": false,
+                            "linkDown": false,
+                            "macaddr": "86:FA:56:29:19:04",
+                            "model": "virtio",
+                            "queues": 0,
+                            "rate": 0,
+                            "tag": -1
+                        }
+                    ],
+                    "nic": "",
+                    "numa": false,
+                    "onboot": true,
+                    "pool": "",
+                    "preprovision": true,
+                    "qemuOs": "l26",
+                    "scsihw": "virtio-scsi-pci",
+                    "searchdomain": "",
+                    "serials": [],
+                    "sockets": 1,
+                    "sshHost": "",
+                    "sshPort": "22104",
+                    "sshkeys": "",
+                    "storage": "",
+                    "storageType": "",
+                    "targetNode": "fermat",
+                    "unusedDisks": [],
+                    "vcpus": 0,
+                    "vlan": -1
+                },
+                "parent": "urn:pulumi:dev::pulumi-pxmx::pulumi:pulumi:Stack::pulumi-pxmx-dev",
+                "provider": "urn:pulumi:dev::pulumi-pxmx::pulumi:providers:proxmoxve::default_0_1_5::41559331-f4b0-456d-bf96-ff4c1cd15cb3",
+                "propertyDependencies": {
+                    "cores": null,
+                    "disks": null,
+                    "iso": null,
+                    "memory": null,
+                    "networks": null,
+                    "scsihw": null,
+                    "sockets": null,
+                    "targetNode": null
+                }
+            },
+            {
+                "urn": "urn:pulumi:dev::pulumi-pxmx::proxmoxve:index/qemuVM:QemuVM::talos-1",
+                "custom": true,
+                "id": "fermat/qemu/103",
+                "type": "proxmoxve:index/qemuVM:QemuVM",
+                "inputs": {
+                    "__defaults": [
+                        "agent",
+                        "balloon",
+                        "bios",
+                        "boot",
+                        "ciWait",
+                        "cloneWait",
+                        "cpu",
+                        "defineConnectionInfo",
+                        "forceCreate",
+                        "fullClone",
+                        "hotplug",
+                        "kvm",
+                        "name",
+                        "numa",
+                        "onboot",
+                        "preprovision",
+                        "qemuOs",
+                        "vcpus"
+                    ],
+                    "agent": 0,
+                    "balloon": 0,
+                    "bios": "seabios",
+                    "boot": "cdn",
+                    "ciWait": 30,
+                    "cloneWait": 15,
+                    "cores": 2,
+                    "cpu": "host",
+                    "defineConnectionInfo": true,
+                    "disks": [
+                        {
+                            "__defaults": [
+                                "backup",
+                                "cache",
+                                "iothread",
+                                "mbps",
+                                "mbpsRd",
+                                "mbpsRdMax",
+                                "mbpsWr",
+                                "mbpsWrMax",
+                                "replicate"
+                            ],
+                            "backup": false,
+                            "cache": "none",
+                            "iothread": false,
+                            "mbps": 0,
+                            "mbpsRd": 0,
+                            "mbpsRdMax": 0,
+                            "mbpsWr": 0,
+                            "mbpsWrMax": 0,
+                            "replicate": false,
+                            "size": "10G",
+                            "storage": "local-lvm",
+                            "type": "scsi"
+                        }
+                    ],
+                    "forceCreate": false,
+                    "fullClone": true,
+                    "hotplug": "network,disk,usb",
+                    "iso": "local:iso/talos-amd64.iso",
+                    "kvm": true,
+                    "memory": 2048,
+                    "name": "talos-1-1231987",
+                    "networks": [
+                        {
+                            "__defaults": [
+                                "firewall",
+                                "linkDown",
+                                "tag"
+                            ],
+                            "bridge": "vmbr0",
+                            "firewall": false,
+                            "linkDown": false,
+                            "model": "virtio",
+                            "tag": -1
+                        }
+                    ],
+                    "numa": false,
+                    "onboot": true,
+                    "preprovision": true,
+                    "qemuOs": "l26",
+                    "scsihw": "virtio-scsi-pci",
+                    "sockets": 1,
+                    "targetNode": "fermat",
+                    "vcpus": 0
+                },
+                "outputs": {
+                    "agent": 0,
+                    "balloon": 0,
+                    "bios": "seabios",
+                    "boot": "cdn",
+                    "bootdisk": "scsi0",
+                    "bridge": "",
+                    "cicustom": "",
+                    "cipassword": "",
+                    "ciuser": "",
+                    "cloneWait": 15,
+                    "cores": 2,
+                    "cpu": "host",
+                    "defineConnectionInfo": true,
+                    "desc": "",
+                    "diskGb": 0,
+                    "disks": [
+                        {
+                            "backup": false,
+                            "cache": "none",
+                            "discard": "",
+                            "file": "vm-103-disk-0",
+                            "format": "raw",
+                            "iothread": false,
+                            "mbps": 0,
+                            "mbpsRd": 0,
+                            "mbpsRdMax": 0,
+                            "mbpsWr": 0,
+                            "mbpsWrMax": 0,
+                            "media": "",
+                            "replicate": false,
+                            "size": "10G",
+                            "slot": 0,
+                            "ssd": false,
+                            "storage": "local-lvm",
+                            "storageType": "lvmthin",
+                            "type": "scsi",
+                            "volume": "local-lvm:vm-103-disk-0"
+                        }
+                    ],
+                    "forceCreate": false,
+                    "fullClone": true,
+                    "hastate": "",
+                    "hotplug": "network,disk,usb",
+                    "id": "fermat/qemu/103",
+                    "ipconfig0": "",
+                    "ipconfig1": "",
+                    "ipconfig2": "",
+                    "iso": "local:iso/talos-amd64.iso",
+                    "kvm": true,
+                    "mac": "",
+                    "memory": 2048,
+                    "name": "talos-1-1231987",
+                    "nameserver": "",
+                    "networks": [
+                        {
+                            "bridge": "vmbr0",
+                            "firewall": false,
+                            "linkDown": false,
+                            "macaddr": "5E:3E:20:96:21:9B",
+                            "model": "virtio",
+                            "queues": 0,
+                            "rate": 0,
+                            "tag": -1
+                        }
+                    ],
+                    "nic": "",
+                    "numa": false,
+                    "onboot": true,
+                    "pool": "",
+                    "preprovision": true,
+                    "qemuOs": "l26",
+                    "scsihw": "virtio-scsi-pci",
+                    "searchdomain": "",
+                    "serials": [],
+                    "sockets": 1,
+                    "sshHost": "",
+                    "sshPort": "22103",
+                    "sshkeys": "",
+                    "storage": "",
+                    "storageType": "",
+                    "targetNode": "fermat",
+                    "unusedDisks": [],
+                    "vcpus": 0,
+                    "vlan": -1
+                },
+                "parent": "urn:pulumi:dev::pulumi-pxmx::pulumi:pulumi:Stack::pulumi-pxmx-dev",
+                "provider": "urn:pulumi:dev::pulumi-pxmx::pulumi:providers:proxmoxve::default_0_1_5::41559331-f4b0-456d-bf96-ff4c1cd15cb3",
+                "propertyDependencies": {
+                    "cores": null,
+                    "disks": null,
+                    "iso": null,
+                    "memory": null,
+                    "networks": null,
+                    "scsihw": null,
+                    "sockets": null,
+                    "targetNode": null
+                }
+            }
+        ]
+    }
+}

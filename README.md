@@ -1,27 +1,35 @@
-# Proxmox test installation
+# Proxmox infrastructure
+
+Document my homelab
 
 This was forked from my [OSX Davinci experiments](https://github.com/daneroo/osx-install-davinci/blob/master/Proxmox.md)
 
-Objective: manage cluster (k8s) and remote workspaces
-
-- Docker remote for development
-- ipfs
+- Docker/K8S for remote development
 - Storage
-- Screen Sharing - Chromebook/MacOS
-- Storage redundancy
-- Kubera on K8S on Proxmox
+  - `/archive`
+  - TimeMachine/CCC Destination
+  - Plex and media content
 
-State 2020-08-26: Proxmox Installed on fermat (full disk) with Catalina and Ubuntu-20.04 guest vms.
+2021-10-21: Proxmox installed on hilbert
+2020-08-26: Proxmox Installed on fermat (full disk) with Catalina and Ubuntu-20.04 guest vms.
+
+- [Proxmox on Hilbert](https://hilbert.imetrical.com:8006)
 
 - [Proxmox on Fermat](https://fermat.imetrical.com:8006)
-- Hover: DNS Name fermat.imetrical.com: 192.168.86.239
-- Static IP `192.168.86.239` was assigned in `/etc/network/interfaces`
-- Same IP was added to Google WIFI DHCP Reservation for it (under uneditable name **Apple**)
-- Preliminary tests were done to use pulumi for provisioning, but no satisfatctory setup for parametrizing vm template and cloud-init (with snaps,tailscale,etc...)
+  - fermat.imetrical.com: 192.168.86.239
+    - Static IP `192.168.86.239` was assigned in `/etc/network/interfaces`
+    - Same IP was added to Google WIFI DHCP Reservation for it (under uneditable name **Apple**)
 
 ## TODO
 
-- Update OSX Section for Bug Sur
+- Install Proxmox Ve 7.0 on hilbert (old DaVinci/Designare)
+  - Disk inventory
+    - /dev/nvme0n1: 931.5 GiB (Sabrent Rocket 1TB - one of them)
+    - /dev/sdb: 2TB - DaVinci20Clone
+    - /dev/sdc: 298.1 GiB - old hitachi 2.5" HDD (HiveOS)
+  - Move HiveOS to hilbert/vm
+  - Update OSX Section for Bug Sur
+- Docs: Copy over Benchmarks/Storage docs from `osx-install-davinci/` repo.
 - Provisioning with Pulumi
   - [pulumi-proxmox](https://www.npmjs.com/package/@matchlighter/pulumi-proxmoxve)
   - parametrizing cloud-init or building custom iso's and templates
@@ -29,7 +37,7 @@ State 2020-08-26: Proxmox Installed on fermat (full disk) with Catalina and Ubun
     - <https://cloudinit.readthedocs.io/en/latest/topics/format.html>
 - Where does Tailscale fit in
   - [Tailscale + k3s](https://blog.dsb.dev/posts/accessing-my-k3s-cluster-from-anywhere-with-tailscale/index.html)
-- Integrate with master infra repo
+- Integrate all infra into monorepo, combining docs and history and qcic
 
 ## Install and Setup
 
@@ -43,8 +51,9 @@ Got `proxmox-ve_6.2-1.iso` from <https://www.proxmox.com/en/downloads/category/i
 ### Big Sur
 
 - [Installing macOS 11 “Big Sur” on Proxmox 6
-](https://www.nicksherlock.com/2020/06/installing-macos-big-sur-on-proxmox/)
+  ](https://www.nicksherlock.com/2020/06/installing-macos-big-sur-on-proxmox/)
 - [Author's current Setup](https://www.nicksherlock.com/2018/11/my-macos-vm-proxmox-setup/)
+
 ### Catalina
 
 - [Bringing up Catalina w/OpenCore](https://www.nicksherlock.com/2020/04/installing-macos-catalina-on-proxmox-with-opencore/)
@@ -67,16 +76,16 @@ It should be possible to install from cloud-init (pointing to a static server wi
 
 When we instantiate a vm from a template, we will still want to provide at a minimum a new hostname. This is what the current `pulumi-pxmx` example does.
 
-- Ubuntu Autoinstall  (Subiquity)
+- Ubuntu Autoinstall (Subiquity)
   - <https://ubuntu.com/server/docs/install/autoinstall>
   - <https://ubuntu.com/server/docs/install/autoinstall-quickstart>
-  - post installation,  stored at `/var/log/installer/autoinstall-user-data`
+  - post installation, stored at `/var/log/installer/autoinstall-user-data`
 - See <https://www.aerialls.io/posts/ubuntu-server-2004-image-packer-subiquity-for-proxmox/>
 - How to make a custom iso (pre-autoinstall a.k.a <18.04) <https://github.com/Telmate/terraform-ubuntu-proxmox-iso>
 
 ### Cloud init proxmox template
 
-This is how we made a proxmox template vm, which we can instantiate from pulumi. 
+This is how we made a proxmox template vm, which we can instantiate from pulumi.
 
 ```bash
 # download the image

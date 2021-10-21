@@ -6,26 +6,35 @@
 - Create VM (2core/2GB/10GB)
 - Boot to get IP
 
-## Thing
+## TODO
+
+- [Dynamic Providers](https://www.pulumi.com/blog/dynamic-providers/)
+## Completing the Installation
+
+- pulumi up
+- get mac addresses
+- start talos dance
 
 ```bash
-export CONTROL_PLANE_IP=192.168.86.32
-./talosctl gen config talos-proxmox https://$CONTROL_PLANE_IP:6443 --output-dir _out
-./talosctl apply-config --insecure --nodes $CONTROL_PLANE_IP --file _out/controlplane.yaml
+export CONTROL_PLANE_IP=192.168.86.27
+export WORKER_IP=192.168.86.34
+export TALOSCONFIGDIR="_out"
+export TALOSCONFIG="${TALOSCONFIGDIR}/talosconfig"
 
-export WORKER_IP=192.168.86.33
-./talosctl apply-config --insecure --nodes $WORKER_IP --file _out/join.yaml
+./talosctl gen config talos-proxmox https://$CONTROL_PLANE_IP:6443 --output-dir ${TALOSCONFIGDIR}
 
-export TALOSCONFIG="_out/talosconfig"
+# This causes a reboot after installation
+./talosctl apply-config --insecure --nodes $CONTROL_PLANE_IP --file ${TALOSCONFIGDIR}/controlplane.yaml
+
+# This causes a reboot after installation
+./talosctl apply-config --insecure --nodes $WORKER_IP --file ${TALOSCONFIGDIR}/join.yaml
+
 ./talosctl config endpoint $CONTROL_PLANE_IP
 ./talosctl config node $CONTROL_PLANE_IP
 
-./talosctl --talosconfig $TALOSCONFIG config endpoint $CONTROL_PLANE_IP
-./talosctl --talosconfig $TALOSCONFIG config node $CONTROL_PLANE_IP
+./talosctl bootstrap
 
-./talosctl --talosconfig $TALOSCONFIG bootstrap
-
-./talosctl --talosconfig $TALOSCONFIG kubeconfig .
+./talosctl kubeconfig .
 
 kubectl --kubeconfig kubeconfig get nodes
 
