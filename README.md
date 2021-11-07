@@ -41,17 +41,49 @@ This was forked from my [OSX Davinci experiments](https://github.com/daneroo/osx
 
 ## Install and Setup
 
-_Took 20 minutes to burn and install!_
+- Got `proxmox-ve_7.0-2.iso` from <https://www.proxmox.com/en/downloads/category/iso-images-pve>
+- [Burn instructions](https://pve.proxmox.com/wiki/Prepare_Installation_Media#_instructions_for_macos)
 
-Got `proxmox-ve_6.2-1.iso` from <https://www.proxmox.com/en/downloads/category/iso-images-pve>
+```bash
+hdiutil convert -format UDRW -o proxmox-ve_7.0-2.dmg proxmox-ve_7.0-2.iso
+diskutil list # to find X
+diskutil unmountDisk /dev/diskX
+sudo dd if=proxmox-ve_*.dmg of=/dev/rdiskX bs=1m
+```
 
 - Burn iso to DVD worked much better than USB Stick, for booting Mac Mini)
 - [Boot Installer (with Alt on non-MacOS keyboard)](https://support.apple.com/en-gb/HT201255)
 
-### Big Sur
+### Enable PCI Passthrough
 
-- [Installing macOS 11 “Big Sur” on Proxmox 6
-  ](https://www.nicksherlock.com/2020/06/installing-macos-big-sur-on-proxmox/)
+For HiveOS and eventuall MacOS, we wish to use pci passthrough to give full access to the Radeon RX580 to the VM
+
+See [Proxmox PCI Passthrough](https://pve.proxmox.com/wiki/Pci_passthrough#Introduction)
+
+### HiveOS
+
+Move [HiveOS on a USB disk](https://hiveos.farm/guides-hdd_move/) to HDD (on proxmox)
+Transfer from USB to proxmox disk:
+
+- hivoesos disk is `/dev/sdc`
+- proxmox vm (provisioned as 32GB ubuntu) is `/dev/dm-6`
+
+I found the proxmox disk with:
+
+```bash
+pvesm status
+pvesm list local-lvm
+pvesm path local-lvm:vm-100-disk-0 # /dev/pve/vm-100-disk-0 -> ../dm-6
+```
+
+```bash
+dd if=/dev/sdc of=/dev/dm-6 bs=10M count=800 status=progress
+```
+
+### Big Sur or Moterey
+
+- [Installing macOS 12 “Monterey” on Proxmox 7](https://www.nicksherlock.com/2021/10/installing-macos-12-monterey-on-proxmox-7/)
+- [Installing macOS 11 “Big Sur” on Proxmox 6](https://www.nicksherlock.com/2020/06/installing-macos-big-sur-on-proxmox/)
 - [Author's current Setup](https://www.nicksherlock.com/2018/11/my-macos-vm-proxmox-setup/)
 
 ### Catalina
