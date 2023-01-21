@@ -57,6 +57,9 @@ kubectl expose deployment podinfo --port=9898
 kubectl set image deployment podinfo podinfo=stefanprodan/podinfo:6.2.3
 
 kubectl port-forward svc/podinfo 9898
+watch -n 0.5 curl --silent http://localhost:9898
+hey http://localhost:9898
+stern podinfo
 
 kubectl delete svc,deploy podinfo
 
