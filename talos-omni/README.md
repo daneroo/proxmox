@@ -32,7 +32,7 @@ Or `brew install int128/kubelogin/kubelogin` on macOS.
 ```bash
 export KUBECONFIG=~/Downloads/talos-default-kubeconfig.yml 
 kubectl get nodes
-watch kubectl get pods,deployment,svc -o wide
+kubectl get nodes,pods,deployment,svc -o wide
 
 # or
 kubectl --kubeconfig talos-default-kubeconfig.yml  get nodes
@@ -45,7 +45,7 @@ kubectl --kubeconfig talos-default-kubeconfig.yml  get nodes
 - expose with ClusterIp
 
 ```bash
-watch kubectl get pods,deployment,svc -o wide
+kubectl get nodes,pods,deployment,svc -o wide
 
 # --image stefanprodan/podinfo
 kubectl create deployment podinfo --image=stefanprodan/podinfo:6.3.0
