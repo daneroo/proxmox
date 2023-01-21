@@ -23,7 +23,7 @@ This was forked from my [OSX Davinci experiments](https://github.com/daneroo/pro
 ## TODO
 
 - Update fermat to 7.0
-  - Migration from 6.0 to 7.0
+  - Migration from 6.0 to 7.0 - <https://pve.proxmox.com/wiki/Upgrade_from_6.x_to_7.0>
   - Or re-install from scratch
 - Install Proxmox Ve 7.0 on hilbert (old DaVinci/Designare)
   - Disk inventory
