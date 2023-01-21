@@ -2,7 +2,7 @@
 
 Document my homelab
 
-This was forked from my [OSX Davinci experiments](https://github.com/daneroo/osx-install-davinci/blob/master/Proxmox.md)
+This was forked from my [OSX Davinci experiments](https://github.com/daneroo/proxmox-hilbert/blob/master/DaVinci-2020/Proxmox.md)
 
 - Docker/K8S for remote development
 - Storage
@@ -10,7 +10,7 @@ This was forked from my [OSX Davinci experiments](https://github.com/daneroo/osx
   - TimeMachine/CCC Destination
   - Plex and media content
 
-2021-10-21: Proxmox installed on hilbert
+2021-10-21: Proxmox installed on hilbert (old davinci)
 2020-08-26: Proxmox Installed on fermat (full disk) with Catalina and Ubuntu-20.04 guest vms.
 
 - [Proxmox on Hilbert](https://hilbert.imetrical.com:8006)
@@ -80,11 +80,30 @@ pvesm path local-lvm:vm-100-disk-0 # /dev/pve/vm-100-disk-0 -> ../dm-6
 dd if=/dev/sdc of=/dev/dm-6 bs=10M count=800 status=progress
 ```
 
-### Big Sur or Moterey
+### Big Sur or Monterey
 
 - [Installing macOS 12 “Monterey” on Proxmox 7](https://www.nicksherlock.com/2021/10/installing-macos-12-monterey-on-proxmox-7/)
 - [Installing macOS 11 “Big Sur” on Proxmox 6](https://www.nicksherlock.com/2020/06/installing-macos-big-sur-on-proxmox/)
 - [Author's current Setup](https://www.nicksherlock.com/2018/11/my-macos-vm-proxmox-setup/)
+
+### Big Sur
+
+- [Installing macOS 11 “Big Sur” on Proxmox 6](https://www.nicksherlock.com/2020/06/installing-macos-big-sur-on-proxmox/)
+
+```bash
+git clone git@github.com:thenickdude/OSX-KVM.git
+
+cd OSX-KVM/scripts/bigsur/
+`# make BigSur-recovery.img # this requires downloading during install
+make BigSur-full.img
+
+
+hdiutil convert BaseSystem.dmg -format RdWr -o Catalina-installer.iso
+mv Catalina-installer.iso.img Catalina-installer.iso
+
+$ ~/Downloads/Proxmox/smc_read
+ourhardworkbythesewordsguardedpleasedontsteal(c)AppleComputerInc
+```
 
 ### Catalina
 
@@ -194,16 +213,36 @@ sudo snap install ipfs
 # setup PATH and bash...
 ```
 
-### Resize Disk
+### microk8s
 
-[Resize disk in Prox mox](https://pve.proxmox.com/wiki/Resize_disks#Online_for_Linux_Guests)
+- 2021-11-14 start from fresh ubuntu-20-04.3-liveserver example 4GB/100GB
+- <https://microk8s.io/docs>
+
+````bash
+sudo snap install microk8s --classic
+
+microk8s status --wait-ready ## will list addons enabled or not
+
+sudo usermod -a -G microk8s daniel
+sudo chown -f -R daniel ~/.kube
+
+# enable addons dns storage metrics traefik  metalb openebs
+microk8s enable dns storage
+
+# get the certificate
+microk8s config
+
+```bash
+### Resize Disk (for moving HiveOS)
+
+[Resize disk in Proxmox](https://pve.proxmox.com/wiki/Resize_disks#Online_for_Linux_Guests)
 
 ```bash
 # Physical PV
 pvresize /dev/vda3
 # Logical LV
 lvresize --extents +100%FREE --resizefs /dev/mapper/ubuntu--vg-ubuntu--lv
-```
+````
 
 ## References
 

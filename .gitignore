@@ -2,4 +2,4 @@ content/
 Catalina-installer.iso
 BaseSystem.dmg
 OpenCore.iso.gz
-OpenCore.iso
+OpenCore*.iso
