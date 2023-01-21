@@ -22,6 +22,9 @@ This was forked from my [OSX Davinci experiments](https://github.com/daneroo/pro
 
 ## TODO
 
+- Update fermat to 7.0
+  - Migration from 6.0 to 7.0
+  - Or re-install from scratch
 - Install Proxmox Ve 7.0 on hilbert (old DaVinci/Designare)
   - Disk inventory
     - /dev/nvme0n1: 931.5 GiB (Sabrent Rocket 1TB - one of them)
