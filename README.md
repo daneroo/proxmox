@@ -10,6 +10,7 @@ This was forked from my [OSX Davinci experiments](https://github.com/daneroo/pro
   - TimeMachine/CCC Destination
   - Plex and media content
 
+2023-01-27: Proxmox installed on px1 (old fermat)
 2021-10-21: Proxmox installed on hilbert (old davinci)
 2020-08-26: Proxmox Installed on fermat (full disk) with Catalina and Ubuntu-20.04 guest vms.
 

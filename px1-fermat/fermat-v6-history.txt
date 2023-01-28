@@ -1,0 +1,288 @@
+    1  top
+    2  ifconfig
+    3  apt install net-tools
+    4  apt update
+    5  apt install net-tools
+    6  ifconfig 
+    7  ip add show
+    8  cd /var/lib/vz/
+    9  ls
+   10  ls images/
+   11  find
+   12  cd /etc/pve/qemu-server/
+   13  ls
+   14  vi 100.conf 
+   15  vi 100.conf 
+   16  vi 100.conf 
+   17  grep flags /proc/cpuinfo
+   18  grep flags /proc/cpuinfo|tail
+   19  grep flags /proc/cpuinfo|tail  -1
+   20  grep flags /proc/cpuinfo|tail  -1
+   21  vi 100.conf 
+   22  cat 100.conf 
+   23  echo 1 > /sys/module/kvm/parameters/ignore_msrs
+   24  l s-ltr
+   25  ls -ltr
+   26  history 
+   27  cd /var/lib/vz/
+   28  ls -ltr
+   29  find
+   30  find -ls
+   31  du -sm ./template/cache/ubuntu-20.04-standard_20.04-1_amd64.tar.gz
+   32  host
+   33  history 
+   34  vi /etc/pve/qemu-server/100.conf 
+   35  ifconfig 
+   36  top
+   37  htop
+   38  apt update
+   39  sudo apt update
+   40  top
+   41  cat /etc/network/interfaces
+   42  ifconfig 
+   43  top
+   44  ifconfig 
+   45  dig +short fermat.imetrical.com
+   46  which qm
+   47  df
+   48  df .
+   49  wget https://cloud-images.ubuntu.com/releases/focal/release/ubuntu-20.04-server-cloudimg-amd64.img
+   50  qm create 9000 --memory 2048 --net0 virtio,bridge=vmbr0
+   51  ls
+   52  qm importdisk 9000 ubuntu-20.04-server-cloudimg-amd64.img local-lvm
+   53  qm set 9000 --scsihw virtio-scsi-pci --scsi0 local-lvm:vm-9000-disk-1
+   54  qm set 9000 --scsihw virtio-scsi-pci --scsi0 local-lvm:vm-9000-disk-0
+   55  qm set 9000 --ide2 local-lvm:cloudinit
+   56  qm set 9000 --boot c --bootdisk scsi0
+   57  qm set 9000 --serial0 socket --vga serial0
+   58  qm template 9000
+   59  qm clone 9000 123 --name ubuntu2
+   60  qm cloudinit dump 9000 user
+   61  qm cloudinit dump 123 user
+   62  htop
+   63  top
+   64  qm cloudinit dump 104 user
+   65  qm cloudinit dump 9000
+   66  qm cloudinit dump 9000 user
+   67  qm cloudinit dump 9000 network 
+   68  qm cloudinit dump 9000 meta
+   69  qm cloudinit dump 9000 user
+   70  df -h
+   71  top
+   72  ps auxww |grep disk
+   73  kill -9 14307
+   74  ps auxww |grep disk
+   75  kill -9 14307
+   76  reboot
+   77  hdparm 
+   78  hdparm -tT /dev/sda
+   79  hdparm -tT /dev/sdb
+   80  tail -f /var/log/syslog
+   81  hdparm -tT /dev/sdb
+   82  hdparm -tT /dev/sdc
+   83  hdparm -tT /dev/sdb
+   84  hdparm -tT /dev/sdc
+   85  fdisk -l
+   86  gdisk /dev/sdc
+   87  gdisk /dev/sdb
+   88  gdisk /dev/sdb
+   89  gdisk /dev/sdb
+   90  gdisk /dev/sdc
+   91  hdparm -tT /dev/sdc
+   92  fdisk -l
+   93  fdisk -l
+   94  fdisk -l
+   95  tail -f /var/log/syslog
+   96  hdparm -tT /dev/sdd
+   97  hdparm -tT /dev/sde
+   98  gdisk /dev/sdb
+   99  gdisk /dev/sdc
+  100  pvesm status
+  101  pvesm remove LVM2
+  102  pvesm status
+  103  pvs
+  104  vgs
+  105  pvs
+  106  pvremove LVM2
+  107  pvremove /dev/sdb
+  108  vgremove 
+  109  vgs
+  110  vgremove LVM2
+  111  pvremove /dev/sdb
+  112  pvs
+  113  vgs
+  114  sgdisk -N 1 /dev/sdb
+  115  fdisl -l /dev/sdb
+  116  fdisk -l /dev/sdb
+  117  gdisk /dev/sdb
+  118  p
+  119  gdisk /dev/sdb
+  120  gdisk /dev/sdc
+  121  fdisk -l
+  122  pvcreate /dev/sdb1 /dev/sdc1
+  123  vgcreate vgstripe /dev/sdb1 /dev/sdc1
+  124  pvcreate /dev/sdb1 /dev/sdc1
+  125  lvcreate  -i 2 -L 1T  -n lvstripe vgstripe
+  126  lvs
+  127  pvesm
+  128  pvesm list
+  129  pvesm scan lvm
+  130  pvesm scan lvmthin
+  131  pvesm scan lvmthin vgstripe
+  132  pvesm list vgstripe
+  133  pvesm status
+  134  pvesm lvmscan
+  135  lvs
+  136  lvconvert --type thin-pool vgstripe/lvstripe
+  137  lvconvert --type thin-pool -Zn vgstripe/lvstripe
+  138  pvesm lvmthinscan pve
+  139  pvesm lvmthinscan vgstripe
+  140  lsblk 
+  141  ls /dev/vgstripe/lvstripe 
+  142  hsparm -tT /dev/vgstripe/lvstripe 
+  143  hdparm -tT /dev/vgstripe/lvstripe 
+  144  cat /etc/pve/storage.cfg 
+  145  pvesm status
+  146  pvesm lvmthinscan pve
+  147  tail -v /var/log/syslog
+  148  lvremove lvstripe
+  149  lvremove -h
+  150  lvremove lvstripe
+  151  lvremove vgstripe
+  152  lvs
+  153  vgs
+  154  vgremove vgstripe 
+  155  lvremove vgstripe
+  156  pvcreate /dev/sdb1 /dev/sdc1 /dev/sdd1 /dev/sde1
+  157  vgcreate vgstripe /dev/sdb1 /dev/sdc1 /dev/sdd1 /dev/sde1
+  158  lvcreate  -i 2 -L 1T  -n lvstripe vgstripe
+  159  lvconvert --type thin-pool -Zn vgstripe/lvstripe
+  160  lvcreate  -i 2 -L 1T  -n lvstripe vgstripe
+  161  lvconvert --type thin-pool -Zn vgstripe/lvstripe
+  162  vgreduce --removemissing
+  163  vgreduce 
+  164  vgreduce --help
+  165  vgreduce -a
+  166  vgreduce -a vgstripe 
+  167  lvremove vgstripe # removes lvstripe
+  168  lvremove vgstripe # removes lvstripe
+  169  vgremove vgstripe
+  170  gdisk /dev/sdd
+  171  gdisk /dev/sdd
+  172  gdisk /dev/sde
+  173  uptime
+  174  vgs
+  175  lvs
+  176  vgs
+  177  lvremove vgstripe # removes lvstripe
+  178  lvremove vgstripe # removes lvstripe
+  179  lvs
+  180  vgs
+  181  vgremove vgstripe
+  182  vgreduce --removemissing
+  183  vgreduce --removemissing vgstripe
+  184  vgremove vgstripe
+  185  lsblkk
+  186  lsblk 
+  187  df -h
+  188  vgs
+  189  lvs
+  190  ls
+  191  pwd
+  192  ls
+  193  df -h .
+  194  df -f
+  195  df -h
+  196  lsblk 
+  197  cat /etc/default/grub
+  198  emacs /etc/default/grub
+  199  apt install emacs-nox
+  200  sudo apt install emacs-nox
+  201  emacs /etc/default/grub
+  202  apt update
+  203  emacs /etc/default/grub
+  204  apt install emacs-nox
+  205  emacs /etc/default/grub
+  206  update-grub
+  207  dmesg | grep -e DMAR -e IOMMU
+  208  cat /etc/modules
+  209  emacs /etc/modules
+  210  dmesg | grep 'remapping'
+  211  history 
+  212  dmesg | grep 'remapping'
+  213  emacs /etc/default/grub
+  214  emacs /etc/default/grub
+  215  emacs /etc/default/grub
+  216  update-grub
+  217  emacs /etc/modules
+  218  emacs /etc/modules
+  219  uptime
+  220  apt-get update
+  221  laksjd
+  222  cat /sys/module/kvm_intel/parameters/nested
+  223  cat /etc/modprobe.d/kvm-intel.conf
+  224  echo "options kvm-intel nested=Y" > /etc/modprobe.d/kvm-intel.conf
+  225  modprobe -r kvm_intel
+  226  modprobe kvm_intel
+  227  modprobe -r kvm_intel
+  228  egrep '(vmx|svm)' --color=always /proc/cpuinfo
+  229  modprobe -r kvm_intel
+  230  sudo modprobe -r kvm_intel
+  231  modprobe -r kvm_intel
+  232  cat /etc/modprobe.d/kvm-intel.conf
+  233  cat /sys/module/kvm_intel/parameters/nested
+  234  qm set 106
+  235  qm get 106
+  236  cat /sys/module/kvm_intel/parameters/nested
+  237  qm get 106
+  238  qm config 106
+  239  qm set <vmid> --cpu host
+  240  ls -ltr
+  241  pwd
+  242  rm ubuntu-20.04-server-cloudimg-amd64.img 
+  243  qm set 106 --cpu host
+  244  qm config 106
+  245  proxmox-boot-tool status
+  246  find /sys/kernel/iommu_groups/ -type l
+  247  ls /etc/modules
+  248  cat /etc/modules
+  249  dmesg | grep -e DMAR -e IOMMU -e AMD-Vi
+  250  egrep '(vmx|svm)' --color=always /proc/cpuinfo
+  251  proxmox-boot-tool status
+  252  more /etc/default/grub
+  253  pveversion
+  254  proxmox-boot-tool help
+  255  qm rescan
+  256  qm rescan 106
+  257  qm rescan --help
+  258  qm rescan -h
+  259  qm rescan --vmid 107
+  260  qm rescan --vmid 106
+  261  qu shutdown
+  262  qm shutdown
+  263  qm shutdown 106
+  264  qm status
+  265  qm status 106
+  266  qm status 106
+  267  qm
+  268  qm config 106
+  269  qm set <VMID> --scsi[n] local-zfs:vm-<VMID>-disk-[n],discard=on
+  270  qm set 106 --scsi0 local-zfs:vm-106-disk-0,discard=on
+  271  qm set 106 --scsi0 local-lvm:vm-106-disk-0,discard=on
+  272  qm set 106 --scsi1 local-lvm:vm-106-disk-1,discard=on
+  273  qm config 106
+  274  qm config 106
+  275  cat /proc/meminfo 
+  276  sudo dmidecode -s baseboard-product-name
+  277  dmidecode -s baseboard-product-name
+  278  history 
+  279  qm config 106
+  280  ls
+  281  lspci
+  282  lspci|grep mouse
+  283  lsusb
+  284  lspci
+  285  lspci
+  286  lspci
+  287  lspci|grep mouse
+  288  apt update
