@@ -19,7 +19,7 @@ This is the initial install of Proxmox v7 onto `px1` nee `fermat`.
 - Disable Enterprise subscription repo
   - `cd /etc/apt/sources.list.d`
   - `mv pve-enterprise.list pve-enterprise.list.disabled`
-- Add `No-Subscription` repository in `Updates > Repositories` 
+- Add `No-Subscription` repository in `Updates > Repositories`
   - which adds the following to `/etc/apt/sources.list`
   - `deb http://download.proxmox.com/debian/pve bullseye pve-no-subscription`
 
