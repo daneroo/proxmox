@@ -1,5 +1,8 @@
 # ubuntu host for docker workloads
 
+- _Note: as of 2024-06-11_
+  - `d1-px1`: now running `go-ted1k` and `scrobblecast`
+
 Created VM on px1 with:
 
 - 4 GB / 4 cores / 100GB disk
@@ -15,7 +18,7 @@ Created VM on px1 with:
 
 ## Post-install
 
-- [x] Hover DNS hostname: d1-px1.imetrical.com : 192.168.86.240
+- [x] Hover DNS hostname: d1-px1.imetrical.com : 192.168.2.121
 - [x] Reserved on Google Wifi
 - [ ] fqdn: d1-px1.imetrical.com in `/etc/hosts`
   - `127.0.1.1 d1-px1.imetrical.com d1-px1`
