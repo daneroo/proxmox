@@ -1,6 +1,6 @@
-
 # Pulumi and ProxMox
 
+- _This is pre Giga 192.168.2._ migration\*
 - [Dynamic Providers](https://www.pulumi.com/blog/dynamic-providers/)
 - <https://github.com/matchlighter/pulumi-proxmoxve>
   - https://github.com/Telmate/proxmox-api-go
