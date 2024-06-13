@@ -10,6 +10,7 @@ This was forked from my [OSX Davinci experiments](https://github.com/daneroo/pro
   - TimeMachine/CCC Destination
   - Plex and media content
 
+2024-06-11: monterey on hilbert (update)
 2023-01-27: Proxmox installed on px1 (old fermat)
 2021-10-21: Proxmox installed on hilbert (old davinci)
 2020-08-26: Proxmox Installed on fermat (full disk) with Catalina and Ubuntu-20.04 guest vms.
@@ -43,6 +44,29 @@ This was forked from my [OSX Davinci experiments](https://github.com/daneroo/pro
 For MacOS, we wish to use pci passthrough to give full access to the Radeon RX580 to the VM
 
 See [Proxmox PCI Passthrough](https://pve.proxmox.com/wiki/Pci_passthrough#Introduction)
+
+### Ventura
+
+Revalidating recipe from blog post, Ventura on hilbert.
+
+- [Installing macOS 13 Ventura on Proxmox 7.2](https://www.nicksherlock.com/2022/10/installing-macos-13-ventura-on-proxmox/)
+
+- Steps
+  - [x] Reclone the repo `git clone git@github.com:thenickdude/OSX-KVM.git`
+  - [x] Create an installation ISO (`Ventura-recovery.img`, `Ventura-full.img`)
+    - this a raw disk image rather than a true ISO.
+  - [x] Prepare an OpenCore image (`OpenCore-v21.iso`)
+  - [x] Fetch the OSK authentication key
+  - [x] Create the VM (no start)
+    - [x] edit the `/etc/pve/qemu-server/200.conf` and confirm.
+    - [x] Choose `Virtio SCSI` controller, not `Virtio SCSI Single` controller as per instructions
+  - [x] Install Ventura
+  - [ ] Make the OpenCore install permanent
+    - mount EFI and edit config.plist, set Misc/Boot/Timeout to 10
+  - `sudo nvram boot-args="-v"`
+  - passthru of GPU/USB was not yet successful
+  - [ ] Hold off on logging into your Apple ID until you’ve configured your Mac’s serial number in OpenCore
+    - [Using GenSMBIOS](https://dortania.github.io/OpenCore-Post-Install/universal/iservices.html#using-gensmbios)
 
 ### Monterey
 
