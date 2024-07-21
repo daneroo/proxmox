@@ -10,6 +10,7 @@ This was forked from my [OSX Davinci experiments](https://github.com/daneroo/pro
   - TimeMachine/CCC Destination
   - Plex and media content
 
+2024-06-12: ventura on hilbert (almost complete)
 2024-06-11: monterey on hilbert (update)
 2023-01-27: Proxmox installed on px1 (old fermat)
 2021-10-21: Proxmox installed on hilbert (old davinci)
